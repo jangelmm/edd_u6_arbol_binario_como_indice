@@ -5,7 +5,9 @@
 >El proyecto se centra en optimizar el manejo de información, abordando la eficiencia en la consulta de datos, la metodología empleada implica el uso de un árbol binario para la lecura de un archivo CSV y la consulta de la información contenida. Este enfoque optimizado permite recuperar la información de interés de manera efectiva y rápida, destacando la importancia de la estructura de datos en la eficiencia de la gestión de la información.
 
 >Nombre del alumno 1: **DIEGO GARCIA JENNIFER**
+
 >Nombre del alumno 2: **MARTINEZ MENDOZA JESUS ANGEL**
+
 >Nombre del alumno 3: **VASQUEZ HERNANDEZ BERNARDO ADONAI**
 
 >Carrera que cursan: **Ingeniería En Sistemas Computacionales**
