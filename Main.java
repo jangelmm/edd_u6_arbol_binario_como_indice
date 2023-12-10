@@ -25,12 +25,24 @@ public class Main {
         do{
             System.out.println("-----------------------------------------------------");
             System.out.print("\tDigite la clave del elemento a buscar: "); String  claveString = entrada.nextLine();
-                int ind = claveString.hashCode();
+                int ind = claveString.hashCode();  //Convertir la entrada a int
             try{
-                imprimirDato(ObtencionDatos.consultar(arbol.buscar(ind).getPosicion()));
+                NodoAvl nodo = arbol.buscar(ind);  //Buscar el Nodo
+                int maxIntentos = 10;  
+                //En caso de alguna colisión provocada buscarla
+                for (int contador = 0; nodo == null && contador < maxIntentos; contador++) {
+                    nodo = arbol.buscar(ind++);
+                }
+
+                if (nodo != null) {
+                    imprimirDato(ObtencionDatos.consultar(nodo.getPosicion()));
+                } else {
+                    System.out.println("\tEl elemento no ha sido encontrado");
+                }
+
             }
             catch(Exception e){
-                System.out.println("\tEl elemento No ha sido encontrado");
+                System.out.println("\tError al buscar el dato");
             }
 
             System.out.print("Realizar otra busqueda (Y/n): "); opc = entrada.next().charAt(0);

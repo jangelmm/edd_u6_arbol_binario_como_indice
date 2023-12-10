@@ -59,8 +59,11 @@ public class ObtencionDatos {
 
                 long pos = raf.getFilePointer();
 
-                arbol.insertar(claveInt, (int) pos);
-
+                int maxIntentos = 10;  // Número máximo de intentos para manejar colisiones
+                while (!arbol.insertar(claveInt, (int) pos) && maxIntentos > 0) {
+                    claveInt++;
+                    maxIntentos--;
+                }
 
                 // Escribe en el archivo binario
                 raf.writeUTF(d.getNombre_localidad());
