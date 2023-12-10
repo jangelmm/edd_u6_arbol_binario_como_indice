@@ -1,9 +1,13 @@
 # Árbol binario como índice
 ---
  > Alumno: Jesús Ángel Martínez Mendoza | 22161152
+
  > Asignatura: Estructura de Datos
+
  > Docente: Dalia Silva Martínez
+
  > Grupo: 3SC | 13:00 - 14:00
+ 
  > Semestre: 3ro | AGO - DIC 2023
 ---
 
