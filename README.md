@@ -1,14 +1,30 @@
 # Árbol binario como índice
 ---
+## Descripción
+
+>El proyecto se centra en optimizar el manejo de información, abordando la eficiencia en la consulta de datos, la metodología empleada implica el uso de un árbol binario para la lecura de un archivo CSV y la consulta de la información contenida. Este enfoque optimizado permite recuperar la información de interés de manera efectiva y rápida, destacando la importancia de la estructura de datos en la eficiencia de la gestión de la información.
+
+>Nombre del alumno 1: **DIEGO GARCIA JENNIFER**
+
+>Nombre del alumno 2: **MARTINEZ MENDOZA JESUS ANGEL**
+
+>Nombre del alumno 3: **VASQUEZ HERNANDEZ BERNARDO ADONAI**
+
+>Carrera que cursan: **Ingeniería En Sistemas Computacionales**
+>Nombre de la materia: **Estructura De Datos**
+>Clave de la materia: **SCD1007**
+
+Competencia de la materia: 
+*Conoce, comprende y aplica los algoritmos de búsqueda para el uso adecuado en el desarrollo de aplicaciones que permita solucionar problemas del  entorno*.
+
+Nombre del asesor: **SILVA MARTINEZ DALIA**
+
  > Alumno: Jesús Ángel Martínez Mendoza | 22161152
-
  > Asignatura: Estructura de Datos
-
  > Docente: Dalia Silva Martínez
-
  > Grupo: 3SC | 13:00 - 14:00
- 
  > Semestre: 3ro | AGO - DIC 2023
+
 ---
 
 ## UML

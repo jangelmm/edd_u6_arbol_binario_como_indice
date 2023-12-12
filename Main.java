@@ -1,65 +1,107 @@
-/*
- * Alumno: Jesús Ángel Martínez Mendoza | 22161152
- * Asignatura: Estructura de Datos
- * Docente: Dalia Silva Martínez
- * Grupo: 3SC | 13:00 - 14:00
- * Semestre: 3ro | AGO - DIC 2023
- */
-
-
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.io.IOException;
-import java.util.Scanner;
 
-public class Main {
-    public static void main(String[] args) throws IOException {
-        Scanner entrada = new Scanner(System.in);
+public class Main extends JFrame {
 
-        //Obtener el Árbol Binario
-        ArbolBalanceado arbol = ObtencionDatos.procesarDatos();
-        char opc = 'Y';
+    private ArbolBalanceado arbol;
 
-        System.out.println("===========================================================================");
-        System.out.println("ACCEDER A UN OBJETO USANDO UN ÁRBOL BINARIO...");
+    public Main() {
+        super("Árbol Binario - Búsqueda de Elementos");
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setSize(500, 300);
+        setLocationRelativeTo(null);
 
-        //Buscar el Elementos
-        do{
-            System.out.println("-----------------------------------------------------");
-            System.out.print("\tDigite la clave del elemento a buscar: "); String  claveString = entrada.nextLine();
-                int ind = claveString.hashCode();  //Convertir la entrada a int
-            try{
-                NodoAvl nodo = arbol.buscar(ind);  //Buscar el Nodo
-                int maxIntentos = 10;  
-                //En caso de alguna colisión provocada buscarla
-                for (int contador = 0; nodo == null && contador < maxIntentos; contador++) {
-                    nodo = arbol.buscar(ind++);
-                }
+        // Crear el Árbol Binario al iniciar la aplicación
+        try {
+            arbol = ObtencionDatos.procesarDatos();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
-                if (nodo != null) {
-                    imprimirDato(ObtencionDatos.consultar(nodo.getPosicion()));
-                } else {
-                    System.out.println("\tEl elemento no ha sido encontrado");
-                }
-
-            }
-            catch(Exception e){
-                System.out.println("\tError al buscar el dato");
-            }
-
-            System.out.print("Realizar otra busqueda (Y/n): "); opc = entrada.next().charAt(0);
-            entrada.nextLine();
-        }while(opc != 'N' && opc != 'n');
-        
-        System.out.println("===========================================================================");
-        entrada.close();
+        initComponents();
     }
-    public static void imprimirDato(Dato d) {
-        System.out.println("Información del Dato:");
-        System.out.printf("%-20s: %-20s%n", "Nombre Municipio", d.getNombre_municipio());
-        System.out.printf("%-20s: %-20s%n", "Nombre Localidad", d.getNombre_localidad());
-        System.out.printf("%-20s: %-10d%n", "Población Masculina", d.getPoblacion_mas());
-        System.out.printf("%-20s: %-10d%n", "Población Femenina", d.getPoblacion_fem());
-        System.out.printf("%-20s: %-20s%n", "Latitud", d.getLatitud());
-        System.out.printf("%-20s: %-20s%n", "Longitud", d.getLongitud());
-        System.out.println("-----------------------------------------------------");
-    }    
+
+    private void initComponents() {
+        JPanel panel = new JPanel(new GridBagLayout());
+        GridBagConstraints gbc = new GridBagConstraints();
+        gbc.insets = new Insets(5, 5, 5, 5);
+
+        JLabel claveLabel = new JLabel("Clave del elemento:");
+        JTextField claveTextField = new JTextField(15);
+        JButton buscarButton = new JButton("Buscar");
+        JTextArea resultadoTextArea = new JTextArea(10, 30);
+        resultadoTextArea.setEditable(false);
+
+        // Agregar componentes al panel usando GridBagConstraints
+        gbc.gridx = 0;
+        gbc.gridy = 0;
+        panel.add(claveLabel, gbc);
+
+        gbc.gridx = 1;
+        panel.add(claveTextField, gbc);
+
+        gbc.gridx = 2;
+        panel.add(buscarButton, gbc);
+
+        gbc.gridx = 0;
+        gbc.gridy = 1;
+        gbc.gridwidth = 3;
+        panel.add(new JScrollPane(resultadoTextArea), gbc);
+
+        // Configurar el botón para realizar la búsqueda
+        buscarButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String claveString = claveTextField.getText();
+                int ind = claveString.hashCode();
+
+                try {
+                    NodoAvl nodo = arbol.buscar(ind);
+
+                    // En caso de alguna colisión provocada, buscarla
+                    int maxIntentos = 10;
+                    for (int contador = 0; nodo == null && contador < maxIntentos; contador++) {
+                        nodo = arbol.buscar(ind++);
+                    }
+
+                    if (nodo != null) {
+                        Dato dato = ObtencionDatos.consultar(nodo.getPosicion());
+                        imprimirDato(resultadoTextArea, dato);
+                    } else {
+                        resultadoTextArea.setText("El elemento no ha sido encontrado");
+                    }
+                } catch (Exception ex) {
+                    resultadoTextArea.setText("Error al buscar el dato");
+                }
+            }
+        });
+
+        // Agregar el panel al JFrame
+        add(panel);
+
+        // Hacer visible la ventana
+        setVisible(true);
+    }
+
+    public static void main(String[] args) {
+        SwingUtilities.invokeLater(new Runnable() {
+            @Override
+            public void run() {
+                new Main();
+            }
+        });
+    }
+
+    public static void imprimirDato(JTextArea textArea, Dato d) {
+        textArea.setText("Información del Dato:\n");
+        textArea.append(String.format("%-20s: %-20s%n", "Nombre Municipio", d.getNombre_municipio()));
+        textArea.append(String.format("%-20s: %-20s%n", "Nombre Localidad", d.getNombre_localidad()));
+        textArea.append(String.format("%-20s: %-10d%n", "Población Masculina", d.getPoblacion_mas()));
+        textArea.append(String.format("%-20s: %-10d%n", "Población Femenina", d.getPoblacion_fem()));
+        textArea.append(String.format("%-20s: %-20s%n", "Latitud", d.getLatitud()));
+        textArea.append(String.format("%-20s: %-20s%n", "Longitud", d.getLongitud()));
+    }
 }
