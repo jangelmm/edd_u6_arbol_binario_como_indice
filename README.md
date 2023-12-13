@@ -4,26 +4,19 @@
 
 >El proyecto se centra en optimizar el manejo de información, abordando la eficiencia en la consulta de datos, la metodología empleada implica el uso de un árbol binario para la lecura de un archivo CSV y la consulta de la información contenida. Este enfoque optimizado permite recuperar la información de interés de manera efectiva y rápida, destacando la importancia de la estructura de datos en la eficiencia de la gestión de la información.
 
->Nombre del alumno 1: **DIEGO GARCIA JENNIFER**
-
->Nombre del alumno 2: **MARTINEZ MENDOZA JESUS ANGEL**
-
->Nombre del alumno 3: **VASQUEZ HERNANDEZ BERNARDO ADONAI**
+>Nombre del alumno 1: **DIEGO GARCIA JENNIFER** (Presentacion)
+>Nombre del alumno 2: **MARTINEZ MENDOZA JESUS ANGEL** (Documentación)
+>Nombre del alumno 3: **VASQUEZ HERNANDEZ BERNARDO ADONAI** (Ejecución)
 
 >Carrera que cursan: **Ingeniería En Sistemas Computacionales**
 >Nombre de la materia: **Estructura De Datos**
 >Clave de la materia: **SCD1007**
 
 Competencia de la materia: 
+
 *Conoce, comprende y aplica los algoritmos de búsqueda para el uso adecuado en el desarrollo de aplicaciones que permita solucionar problemas del  entorno*.
 
 Nombre del asesor: **SILVA MARTINEZ DALIA**
-
- > Alumno: Jesús Ángel Martínez Mendoza | 22161152
- > Asignatura: Estructura de Datos
- > Docente: Dalia Silva Martínez
- > Grupo: 3SC | 13:00 - 14:00
- > Semestre: 3ro | AGO - DIC 2023
 
 ---
 
@@ -104,8 +97,10 @@ classDiagram
   }
 
   class Main {
-    +main(args: String[]): void
-    +imprimirDato(d: Dato): void
+    -arbol: ArbolBalanceado
+    +Main()
+    +initComponents(): void
+    +imprimirDato(textArea: JTextArea, d: Dato): void
   }
 
 Main ..>Dato
@@ -115,6 +110,7 @@ Main ..> ArbolBalanceado
 ObtencionDatos..> ArbolBalanceado
 ObtencionDatos..> Dato
 ArbolBalanceado ..> NodoAvl
+
 ````
 ---
 ## API
@@ -239,15 +235,20 @@ La clase `ObtencionDatos` realiza la obtención y procesamiento de datos, utiliz
 | `obtenerUltimoDigito(int numero)` | `int` | `int numero` | Obtiene el último dígito de un número. Retorna 7 si hay un error durante la obtención. |
 | `obtenerUltimoCaracter(String dato, int pos)` | `char` | `String dato, int pos` | Obtiene el último carácter de una cadena en una posición especificada. Retorna 'x' si hay un error durante la obtención. |
 
-
-### Main.java
+### Main
 
 #### Descripción
-La clase `Main` contiene el método principal (`main`) que utiliza un árbol binario para acceder a objetos y realizar búsquedas de elementos.
-
+La clase `Main` representa la interfaz gráfica de usuario para la búsqueda de elementos en un árbol binario balanceado.
+#### Campos
+| Tipo | Campo | Descripción |
+|------|-------|-------------|
+| `ArbolBalanceado` | `arbol` | Representa el árbol binario balanceado utilizado para la búsqueda de elementos. |
+#### Constructores
+| Constructor | Descripción |
+|-------------|-------------|
+| `Main()` | Crea una nueva instancia de la interfaz gráfica para la búsqueda de elementos. |
 #### Métodos
-
-| Método | Tipo de Dato que Retorna | Tipo de dato que recibe | Descripción |
-|--------|-------------------------|-------------------------|-------------|
-| `main(String[] args)` | `void` | `String[] args` | Método principal que realiza la interacción con el usuario para buscar elementos en un árbol binario y mostrar su información. |
-| `imprimirDato(Dato d)` | `void` | `Dato d` | Imprime la información de un objeto `Dato` en un formato estructurado. |
+| Nombre | Tipo de Dato que Retorna | Tipo de dato que recibe | Descripción |
+|--------|--------|-------------------------|-------------|
+| `initComponents()` | `void` | - | Inicializa y configura los componentes de la interfaz gráfica. |
+| `imprimirDato(JTextArea textArea, Dato d)` | `void` | `JTextArea textArea`, `Dato d` | Imprime la información de un dato en el área de texto especificada. |
