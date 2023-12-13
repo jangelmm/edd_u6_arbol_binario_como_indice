@@ -252,3 +252,58 @@ La clase `Main` representa la interfaz gráfica de usuario para la búsqueda de 
 |--------|--------|-------------------------|-------------|
 | `initComponents()` | `void` | - | Inicializa y configura los componentes de la interfaz gráfica. |
 | `imprimirDato(JTextArea textArea, Dato d)` | `void` | `JTextArea textArea`, `Dato d` | Imprime la información de un dato en el área de texto especificada. |
+
+## Casos de pruebas
+- `AN087`
+
+Información del Dato:
+Nombre Municipio    : Asunción Nochixtlán 
+Nombre Localidad    : Nuevo Yucahua       
+Población Masculina : 0         
+Población Femenina  : 0         
+Latitud             : "17°28'00.418"" N"  
+Longitud            : " 97°10'49.897"" W" 
+
+- `SE533`
+
+Información del Dato:
+Nombre Municipio    : Santa Inés de Zaragoza
+Nombre Localidad    : El Molino           
+Población Masculina : 21        
+Población Femenina  : 34        
+Latitud             : "17°15'36.553"" N"  
+Longitud            : " 97°10'12.123"" W" 
+
+- `SC129`
+
+Información del Dato:
+Nombre Municipio    : Santiago Tlazoyaltepec
+Nombre Localidad    : Cañada de Ceniza    
+Población Masculina : 15        
+Población Femenina  : 16        
+Latitud             : "17°01'05.102"" N"  
+Longitud            : " 96°57'47.129"" W" 
+
+
+- `CE048`
+
+Información del Dato:
+Nombre Municipio    : Candelaria Loxicha  
+Nombre Localidad    : El Encanto          
+Población Masculina : 0         
+Población Femenina  : 0         
+Latitud             : "15°57'47.294"" N"  
+Longitud            : " 96°31'14.318"" W" 
+
+
+- `SL0xx`
+
+Información del Dato:
+Nombre Municipio    : San Juan Bautista Valle Nacional
+Nombre Localidad    : Localidades de dos viviendas
+Población Masculina : 13        
+Población Femenina  : 17        
+Latitud             :                     
+Longitud            :                     
+
+
